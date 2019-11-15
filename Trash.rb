@@ -204,6 +204,30 @@ while i_cart < cart.length do
 end
 p cart
 
+
+
+i_coupons = 0
+while i_coupons < coupons.length
+  cart_item = find_item_by_name_in_collection(coupons[i_coupons][:item], cart)
+  coupon_item_name = "#{coupons[i_coupons][:item]}  W/COUPON"
+  cart_item_wcoupon = find_item_by_name_in_collection(coupon_item_name, cart)
+    if cart_item && cart_item[:count] >= coupons[i_coupons][:num]
+      if cart_item_wcoupon
+        cart_item_wcoupon += coupons[i_coupons][:num]
+        cart_item -= coupons[i_coupons][:num]
+      else
+        cart_item_wcoupon = {
+          :item => cart_item,
+          :price => coupons[i_coupons][:cost] / coupons[i_coupons][:num],
+          :count => coupons[i_coupons][:num],
+          :clearance => coupons[i_coupons][:clearance]
+        }
+        cart << cart_item_wcoupon
+        cart_item[:count] -= coupons[i_coupons][:num]
+      end
+    end
+
+  i_coupons += 1
 ##########################
 
 i = 0
