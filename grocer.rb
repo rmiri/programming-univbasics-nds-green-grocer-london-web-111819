@@ -87,7 +87,7 @@ unless coupons.empty?
      itemWDisc[:price] = coupons[i_coupons][:cost]/coupons[i_coupons][:num]
 
      cart.push(itemWDisc)
-   
+
    end
    i_cart += 1
    i_coupons += 1
