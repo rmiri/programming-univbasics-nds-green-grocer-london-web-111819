@@ -70,7 +70,13 @@ def apply_coupons(cart, coupons)
 
   #If there are 2 avocados it will be 2.50 each, and the item name will change also.
   #it might need to compare the new hash with the coupons one.
-
+  cart.each do |c|
+    coupons.each do |d|
+      if c[:item] == d[:item]
+        if c[:count] >= d[:count]
+          re = c[:count] % d[:num]
+          cart.push({:item => "#{c[:item]} W/COUPON", :price => d[:cost]/d[:num], :clearance => c[:clearance], :count => c[:count] - re})
+          c[:count] = re
 end
 
 
