@@ -77,6 +77,11 @@ def apply_coupons(cart, coupons)
           re = c[:count] % d[:num]
           cart.push({:item => "#{c[:item]} W/COUPON", :price => d[:cost]/d[:num], :clearance => c[:clearance], :count => c[:count] - re})
           c[:count] = re
+        end
+      end
+    end
+  end
+  p cart
 end
 
 
