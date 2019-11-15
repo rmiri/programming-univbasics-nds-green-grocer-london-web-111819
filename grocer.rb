@@ -97,7 +97,7 @@ end
 
 
 #######Not finished!!!! I have no idea of what to do
-end
+
 
 def apply_clearance(cart)
   # Consult README for inputs and outputs
