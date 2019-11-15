@@ -70,32 +70,7 @@ def apply_coupons(cart, coupons)
 
   #If there are 2 avocados it will be 2.50 each, and the item name will change also.
   #it might need to compare the new hash with the coupons one.
-  i_cart = 0
-unless coupons.empty?
-  while i_cart < cart.length do
 
-    i_coupons = 0
-     if cart[i_cart][:item] == coupons[i_coupons][:item] && cart[i_cart][:count] >= coupons[i_coupons][:num]
-
-      cart[i_cart][:count] -= coupons[i_coupons][:num]
-
-     itemWDisc = Hash.new
-     itemWDisc.merge!(cart[i_cart])
-     itemWDisc[:item] = itemWDisc[:item] + " W/COUPON"
-
-     re = cart[i_cart][:count] % coupons[i_coupons][:num]
-
-    itemWDisc[:count] = cart[i_cart][:count] - re
-    itemWDisc[:price] = coupons[i_coupons][:cost]/coupons[i_coupons][:num]
-    cart[i_cart][:count] = re
-    cart.push(itemWDisc)
-
-   end
-   i_cart += 1
-   i_coupons += 1
-  end
-  p cart
-end
 end
 
 
