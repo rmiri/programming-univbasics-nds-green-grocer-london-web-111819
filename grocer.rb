@@ -70,28 +70,11 @@ def apply_coupons(cart, coupons)
 
   #If there are 2 avocados it will be 2.50 each, and the item name will change also.
   #it might need to compare the new hash with the coupons one.
-i_coupons = 0
-while i_coupons < coupons.length
-  cart_item = find_item_by_name_in_collection(coupons[i_coupons][:item], cart)
-  coupon_item_name = "#{coupons[i_coupons][:item]}  W/COUPON"
-  cart_item_wcoupon = find_item_by_name_in_collection(coupon_item_name, cart)
-    if cart_item && cart_item[:count] >= coupons[i_coupons][:num]
-      if cart_item_wcoupon
-        cart_item_wcoupon += coupons[i_coupons][:num]
-        cart_item -= coupons[i_coupons][:num]
-      else
-        cart_item_wcoupon = {
-          :item => cart_item,
-          :price => coupons[i_coupons][:cost] / coupons[i_coupons][:num],
-          :count => coupons[i_coupons][:num],
-          :clearance => coupons[i_coupons][:clearance]
-        }
-        cart << cart_item_wcoupon
-        cart_item[:count] -= coupons[i_coupons][:num]
-      end
-    end
+  coupons.each do |coupon|
+    item = coupon[:item]
+    if cart.has_key?(item)
+      if cart[:item][:count] >= coupon[:num] && cart.has_key?()
 
-  i_coupons += 1
 end
 
 
