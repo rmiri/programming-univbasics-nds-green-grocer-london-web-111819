@@ -83,8 +83,11 @@ unless coupons.empty?
      itemWDisc.merge!(cart[i_cart])
      itemWDisc[:item] = itemWDisc[:item] + " W/COUPON"
 
-     itemWDisc[:count] += coupons[i_coupons][:num]
-     itemWDisc[:price] = coupons[i_coupons][:cost]/coupons[i_coupons][:num]
+     re = cart[i_cart][:count] % coupons[i_coupons][:num]
+    itemWDisc[:count] = cart[i_cart][:count] - re
+    itemWDisc[:price] = coupons[i_coupons][:cost]/coupons[i_coupons][:num]
+   cart[i_cart][:count] = re
+    cart.push(itemWDisc)
 
      cart.push(itemWDisc)
 
