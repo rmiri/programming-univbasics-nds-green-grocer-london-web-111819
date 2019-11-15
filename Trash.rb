@@ -188,7 +188,7 @@ while i_cart < cart.length do
   i_coupons = 0
   if cart[i_cart][:item] == coupons[i_coupons][:item] && cart[i_cart][:count] >= coupons[i_coupons][:num]
 
-    cart[i_cart][:count] = cart[i_cart][:count] - coupons[i_coupons][:num]
+    cart[i_cart][:count] -= coupons[i_coupons][:num]
 
    itemWDisc = Hash.new
    itemWDisc.merge!(cart[i_cart])
@@ -228,6 +228,23 @@ while i_coupons < coupons.length
     end
 
   i_coupons += 1
+
+
+
+
+
+  coupons.each do |coupon|
+    item = coupon[:item]
+    if cart.has_key?(item)
+      if cart[item][:count] >= coupon[:num] && !cart("#{item} W/COUPON")
+        cart["#{item} W/COUPON"] = {price: coupon[:cost] / coupon[:num]}
+      elsif cart[item][:count] >= coupon[:num] && cart("#{item} W/COUPON")
+        cart["#{item} W/COUPON"] += coupon[:num]
+      end
+      cart[item][:count] -= coupon[:num]
+    end
+  end
+cart
 ##########################
 
 i = 0
