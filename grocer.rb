@@ -71,6 +71,7 @@ def apply_coupons(cart, coupons)
   #If there are 2 avocados it will be 2.50 each, and the item name will change also.
   #it might need to compare the new hash with the coupons one.
   i_cart = 0
+  if coupons.any?
   while i_cart < cart.length do
 
     i_coupons = 0
@@ -93,7 +94,7 @@ def apply_coupons(cart, coupons)
    i_coupons += 1
   end
   p cart
-
+end
 end
 
 
