@@ -73,7 +73,7 @@ def apply_coupons(cart, coupons)
   cart.each do |c|
     coupons.each do |d|
       if c[:item] == d[:item]
-        if c[:count] >= d[:count]
+        if c[:count] >= d[:num]
           re = c[:count] % d[:num]
           cart.push({:item => "#{c[:item]} W/COUPON", :price => d[:cost]/d[:num], :clearance => c[:clearance], :count => c[:count] - re})
           c[:count] = re
