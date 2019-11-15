@@ -84,12 +84,11 @@ unless coupons.empty?
      itemWDisc[:item] = itemWDisc[:item] + " W/COUPON"
 
      re = cart[i_cart][:count] % coupons[i_coupons][:num]
+
     itemWDisc[:count] = cart[i_cart][:count] - re
     itemWDisc[:price] = coupons[i_coupons][:cost]/coupons[i_coupons][:num]
-   cart[i_cart][:count] = re
+    cart[i_cart][:count] = re
     cart.push(itemWDisc)
-
-     cart.push(itemWDisc)
 
    end
    i_cart += 1
